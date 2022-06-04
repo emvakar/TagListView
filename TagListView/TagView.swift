@@ -17,14 +17,15 @@ open class TagView: UIButton {
             layer.masksToBounds = cornerRadius > 0
         }
     }
-    @IBInspectable open var borderWidth: CGFloat = 0 {
+    @IBInspectable open var borderTagWidth: CGFloat = 0 {
         didSet {
-            layer.borderWidth = borderWidth
+            layer.borderWidth = borderTagWidth
         }
     }
     
-    @IBInspectable open var borderColor: UIColor? {
+    @IBInspectable open var borderTagColor: UIColor? {
         didSet {
+            layer.borderColor = borderTagColor?.cgColor
             reloadStyles()
         }
     }
@@ -97,12 +98,12 @@ open class TagView: UIButton {
         }
         else if isSelected {
             backgroundColor = selectedBackgroundColor ?? tagBackgroundColor
-            layer.borderColor = selectedBorderColor?.cgColor ?? borderColor?.cgColor
+            layer.borderColor = selectedBorderColor?.cgColor ?? borderTagColor?.cgColor
             setTitleColor(selectedTextColor, for: UIControl.State())
         }
         else {
             backgroundColor = tagBackgroundColor
-            layer.borderColor = borderColor?.cgColor
+            layer.borderColor = borderTagColor?.cgColor
             setTitleColor(textColor, for: UIControl.State())
         }
     }
